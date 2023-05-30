@@ -19,8 +19,8 @@ function createMetadata (sample) {
         sampleMetadata.html("");
 
         // Use d3 to append new tags for each key-value in the metadata.
-        for (x in y) {
-            sampleMetadata.append("h6").text(`${x.toUpperCase()}: ${y[x]}`);
+        for (x in filteredSample) {
+            sampleMetadata.append("h6").text(`${x.toUpperCase()}: ${filteredSample[x]}`);
         };
     });
 };
@@ -93,7 +93,7 @@ function createCharts(sample) {
 function init() {
     // Grab a reference to the dropdown select element
     // Establish drop down menu (ref 3.9) only with the ID numbers from the (filter)
-        let sample = d3.select("#selDataset");
+        let selector = d3.select("#selDataset");
     
         // Use the list of sample 'names' to populate the select options
         d3.json(url).then((data) => {
